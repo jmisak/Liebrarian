@@ -1,0 +1,44 @@
+# ===================================================================
+#         CONFIGURATION FOR THE ENTERPRISE DIGITAL LIBRARIAN
+# ===================================================================
+
+# --- File and Directory Settings ---
+# Directory where your source documents (.docx, .pptx, .xlsx) are located.
+source_directory: "source_documents"
+
+# Directory to persist the vector database.
+# This ensures the index is not lost when the app restarts.
+vector_store_directory: "vector_store"
+collection_name: "digital_librarian_prod"
+
+# --- Embedding Model Settings ---
+# Hugging Face model for creating text embeddings.
+# 'all-MiniLM-L6-v2' is a good starting point.
+# For higher accuracy, consider 'bge-large-en-v1.5'.
+embedding_model_name: "thenlper/gte-large"
+
+# --- LLM (LM Studio) Settings ---
+# The base URL of your LM Studio server.
+llm_base_url: "http://192.168.1.245:1234/v1"
+# API key is not required for LM Studio, but is included for future compatibility.
+llm_api_key: "not-needed"
+
+# --- RAG (Retrieval-Augmented Generation) Settings ---
+# Number of relevant document chunks to retrieve for context.
+retrieval_k_value: 4
+
+# --- Gradio Web UI Settings ---
+# Set share=True to create a public URL. Set to False to run locally.
+share_ui: True
+server_name: "0.0.0.0" # Makes the app accessible on your local network.
+
+# Authentication for the Gradio UI.
+# Add as many [username, password] pairs as you need.
+# IMPORTANT: Change these default credentials before deployment.
+auth_credentials:
+  - ["admin", "Camponi#3221"]
+  - ["beta_user", "Lieberman!tester@767679876"]
+
+# --- Logging Configuration ---
+log_file: "digital_librarian.log"
+log_level: "INFO" # Can be DEBUG, INFO, WARNING, ERROR, CRITICAL
